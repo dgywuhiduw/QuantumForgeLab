@@ -1,14 +1,14 @@
-function selectionSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let minIndex = i;
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[minIndex]) minIndex = j;
-    }
-    if (minIndex !== i) {
-      let temp = arr[i];
-      arr[i] = arr[minIndex];
-      arr[minIndex] = temp;
-    }
+function maxArea(height) {
+  let maxArea = 0;
+  let left = 0;
+  let right = height.length - 1;
+  while (left < right) {
+    maxArea = Math.max(
+      maxArea,
+      Math.min(height[left], height[right]) * (right - left),
+    );
+    if (height[left] < height[right]) left++;
+    else right--;
   }
-  return arr;
+  return maxArea;
 }
