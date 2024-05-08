@@ -1,7 +1,9 @@
-const groupBy = (arr, func) =>
-  arr
-    .map(typeof func === "function" ? func : (val) => val[func])
-    .reduce((acc, val, i) => {
-      acc[val] = (acc[val] || []).concat(arr[i]);
-      return acc;
-    }, {});
+function maxProfit(prices) {
+  let minPrice = Infinity;
+  let maxProfit = 0;
+  for (const price of prices) {
+    minPrice = Math.min(minPrice, price);
+    maxProfit = Math.max(maxProfit, price - minPrice);
+  }
+  return maxProfit;
+}
